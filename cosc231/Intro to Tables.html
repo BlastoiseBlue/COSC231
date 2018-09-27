@@ -4,7 +4,7 @@
 <head>
 <title>Tables</title>
 <style>
-table{
+table#t01{
 border:1px solid black;
 text-align:center;
 width:3%;
@@ -15,10 +15,25 @@ th, td{
 border:1px solid black;
 text-align:center;
 }
+table#t02{
+border-width:1px;
+border-style:solid;
+border-color:black;
+text-align:center;
+width:3%;
+border-collapse:collapse;
+border-spacing:5px;
+}
+table#t03{
+border:1px solid black;
+text-align:center;
+width:50%;
+border-collapse:collapse;
+}
 </style>
 </head>
 <body>
-<table>
+<table id="t01">
 <tr>
 <th>Row 1</th>
 </tr>
@@ -29,5 +44,21 @@ text-align:center;
 <td>Row 3</td>
 </tr>
 </table>
+<br>
+<table id="t02">
+<tr>
+<th>Row 1</th>
+</tr>
+<tr>
+<td>Row 2</td>
+</tr>
+<tr>
+<td>Row 3</td>
+</tr>
+</table>
+<table id="t03"><tr>
+<td>stuff</td><td>in</td><td>this</td></tr>
+<tr><td rowspan="2" style="vertical-align:bottom">table</td><td>looks</td><td>very</td></tr>
+<tr><td>strange</td><td>indeed</td></tr></table>
 </body>
 </html>
