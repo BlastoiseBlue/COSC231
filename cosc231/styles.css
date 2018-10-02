@@ -1,0 +1,46 @@
+body{
+background-color:#1414B5;
+}
+h1{
+font-family:Arial,Helvetica,sans-serif;
+text-align:center;
+color:#FFE500;
+}
+h2{
+font-family:Arial,Helvetica,sans-serif;
+text-align:center;
+color:#FFE500;
+}
+h3{
+font-family:Arial,Helvetica,sans-serif;
+text-align:center;
+color:#FFE500;
+}
+p{
+font-family:"Times New Roman",Times,serif;
+color:#FFE500;
+}
+a{
+font-family:"Times New Roman",Times,serif;
+color:#FF9500;
+}
+a:link{
+font-family:"Times New Roman",Times,serif;
+color:#FF9500;
+}
+a:visited{
+font-family:"Times New Roman",Times,serif;
+color:yellow;
+}
+a.highlight:hover{
+font-family:"Times New Roman",Times,serif;
+color:#FFBC5D;
+}
+a:active{
+font-family:"Times New Roman",Times,serif;
+color:#FFAE3B;
+}
+li{
+font-family:"Times New Roman",Times,serif;
+color:#FFE500;
+}
