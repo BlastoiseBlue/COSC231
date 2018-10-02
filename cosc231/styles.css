@@ -13,7 +13,6 @@ color:#FFE500;
 }
 h3{
 font-family:Arial,Helvetica,sans-serif;
-text-align:center;
 color:#FFE500;
 }
 p{
@@ -43,4 +42,9 @@ color:#FFAE3B;
 li{
 font-family:"Times New Roman",Times,serif;
 color:#FFE500;
+}
+hr{
+border-width:0px;
+height:10px;
+background-color:#FFE500;
 }
