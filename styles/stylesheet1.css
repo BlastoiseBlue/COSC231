@@ -112,24 +112,6 @@ margin-top:15px;
     overflow: hidden;
 }*/
 /* Style the links inside the navigation bar */
-ul.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-/* Change the color of links on hover */
-ul.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-/* Add a color to the active/current link */
-ul.topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-}
 ul.topnav{
 	list-style-type: none;
     margin: 0;
@@ -142,12 +124,39 @@ ul.topnav{
     position: fixed;
 	z-index:1;
 }
+ul.topnav li a {
+    /*float: left;*/
+	display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+/* Change the color of links on hover */
+ul.topnav a:hover:not(.active) {
+    background-color: #ddd;
+    color: black;
+}
+/* Add a color to the active/current link */
+ul.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
 div.main{
 	padding:20px;
 	margin-top:30px;
 	position:relative;
 	z-index:0;
 }
-ul.topnav li.about{
+ul.topnav li{
+	float:left;
+	padding: 14px 16px;
+}
+ul.topnav li.right{
 	float:right;
+}
+@media screen and (max-width: 600px){
+	ul.topnav li.right,
+	ul.topnav li {float:none;}
 }
