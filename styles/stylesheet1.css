@@ -131,7 +131,7 @@ ul.topnav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    /*font-size: 17px;*/
 }
 /* Change the color of links on hover */
 ul.topnav a:hover:not(.active) {
@@ -151,7 +151,7 @@ div.main{
 }
 ul.topnav li{
 	float:left;
-	padding: 14px 16px;
+	padding: 0
 }
 ul.topnav li.right{
 	float:right;
