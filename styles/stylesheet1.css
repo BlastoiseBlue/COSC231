@@ -99,7 +99,7 @@ text-align:center;
 table#t01 {
 width: 100%;
 border-collapse: collapse;
-padding-top:15px;
+/*padding-top:15px;*/
 }
 table#t02{
 width:100%;
@@ -156,7 +156,13 @@ ul.topnav li{
 ul.topnav li.right{
 	float:right;
 }
+img.main{
+	width:300px;
+}
 @media screen and (max-width: 600px){
 	ul.topnav li.right,
 	ul.topnav li {float:none;}
+	div.main {margin-top:180px;}
+	img.main {width:100%;}
+	td.thirtyThreePix {padding:0;}
 }
