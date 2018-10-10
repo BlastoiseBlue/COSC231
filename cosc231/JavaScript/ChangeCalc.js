@@ -1,5 +1,5 @@
 function getChange(){
-    var cash=document.getElementById("cash");
+    var cash=document.getElementById("cash").value;
     var quarters=Math.floor(cash/25);
     cash%=25;
     var dimes=Math.floor(cash/10);
@@ -7,7 +7,7 @@ function getChange(){
     var nickels=Math.floor(cash/5);
     cash%=5;
     var pennies=cash;
-    var total = "Change back...\nQuarters: " + quarters
+    var total = "Change back..."+"\n"+"Quarters: " + quarters
     +"\n"+" Dimes: "+dimes
     +"\n"+"Nickels: "+nickels
     +"\n"+"Pennies: "+pennies;
