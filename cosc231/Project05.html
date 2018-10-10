@@ -1,17 +1,21 @@
 <!DOCTYPE html>
+<!-- Created by Emmet Stanevich on 10/10 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Project 5</title>
     <link rel="stylesheet" href="../styles/stylesheet1.css">
+    <script src="JavaScript/ChangeCalc.js"></script>
 </head>
-<body>
+<body style="margin: 50px">
 <h1>Change calculator by Emmet Stanevich</h1>
 <p>Enter the amount of change the customer is to get back and I will tell you the number of quarters, dimes,
     nickels and pennies they are to get back.</p>
 <br>
 <p>Enter the amount of cash back:
-<input id="cash" type="number">
+<input id="cash" type="number" onchange="getChange()">
 </p>
+<br>
+<h2 id="outputTotal"></h2>
 </body>
 </html>

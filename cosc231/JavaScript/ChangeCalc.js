@@ -7,4 +7,9 @@ function getChange(){
     var nickels=Math.floor(cash/5);
     cash%=5;
     var pennies=cash;
+    var total = "Change back...\nQuarters: " + quarters
+    +"\nDimes: "+dimes
+    +"\nNickels: "+nickels
+    +"\nPennies: "+pennies;
+    document.getElementById("outputTotal").innerHTML=total;
 }
