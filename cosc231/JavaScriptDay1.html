@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Created by Emmet Stanevich on 10/9 -->
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Trip Planner</title>
+<script>
+function fillIn(){
+var name = document.getElementById('name').value;
+var vehicle = document.getElementById('vehicle').value;
+var city = document.getElementById('city').value;
+var clr = document.getElementById('clr').value;
+var numDays = Math.floor(Math.random()*100);
+var story = name+" went by "+vehicle+" to "+city+ " for " + numDays + " fun-filled " + clr + " days.";
+document.getElementById('outputStory').innerHTML = story;
+}
+</script>
+<style>
+h1,h2,h3,p{
+text-align:center;
+}
+</style>
+</head>
+<body style="margin:50px">
+<h2>Take a trip to your <i>favorite</i> place in the World!</h2>
+<p>Enter your First Name:
+<input id="name" type="text">
+</p>
+<p>Enter a method of transportation:
+<input id="vehicle" type="text">
+</p>
+<p>Enter a city that you would like to visit:
+<input id="city" type="text">
+</p>
+<p>Enter your favorite color:
+<input id="clr" type="text" onchange="fillIn()">
+</p>
+<h2 id="outputStory"></h2>
+</body>
+</html>
