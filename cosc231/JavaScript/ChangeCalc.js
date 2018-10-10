@@ -8,8 +8,8 @@ function getChange(){
     cash%=5;
     var pennies=cash;
     var total = "Change back...\nQuarters: " + quarters
-    +"\nDimes: "+dimes
-    +"\nNickels: "+nickels
-    +"\nPennies: "+pennies;
+    +"\n"+" Dimes: "+dimes
+    +"\n"+"Nickels: "+nickels
+    +"\n"+"Pennies: "+pennies;
     document.getElementById("outputTotal").innerHTML=total;
 }
