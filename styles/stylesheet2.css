@@ -1,7 +1,7 @@
 /*
-Created by Emmet Stanevich on 10/2
-Updated on 10/8
-This sheet is the for older pages
+Created by Emmet Stanevich on 10/11
+Updated on 10/11
+This sheet is derived from the original
 */
 body{
 	background-color:#1414B5;
@@ -19,10 +19,12 @@ h2{
 }
 h3{
 	font-family:Arial,Helvetica,sans-serif;
+	text-align: center;
 	color:#FFE500;
 }
 p{
 	font-family:"Times New Roman",Times,serif;
+	text-align: center;
 	color:#FFE500;
 }
 a{
