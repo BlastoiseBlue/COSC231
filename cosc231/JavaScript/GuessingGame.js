@@ -1,16 +1,18 @@
-var x=Math.floor(Math.random()*10);
+var x=Math.floor(Math.random()*100);
 function scramble(){
-    x=Math.floor(Math.random()*10);
+    x=Math.floor(Math.random()*100);
 }
 function guess(){
     var guess=document.getElementById("guess").value;
+    var name=document.getElementById("name").value;
     var result;
-    if(guess>x)result="Sorry "+document.getElementById("name").value+", but your guess was too high";
-    else if(guess<x)result="Sorry "+document.getElementById("name").value+", but your guess was too low";
+    if(guess>x)result="Sorry "+name+", but your guess was too high";
+    else if(guess<x)result="Sorry "+name+", but your guess was too low";
     else if(guess==x){
-        result="Congratulations "+document.getElementById("name").value+"!"+"<br/>"
+        result="Congratulations, "+name +"!"+ "<br/>"
             +"Enter a new number to try again!";
         scramble();
     }
     else result="ERROR";
+    document.getElementById("result").innerHTML=result;
 }
