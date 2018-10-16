@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: orange;
+    }
+    #animate {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: blue;
+        border-color: #1414B5;
+    }
+</style>
+<body>
+
+<p>
+    <button onclick="myMove()">Click Me</button>
+</p>
+
+<div id ="container">
+    <div id ="animate"></div>
+</div>
+
+<script>
+    function myMove() {
+        var elem = document.getElementById("animate");
+        var xpos = 0;
+        var ypos = 0;
+        elem.style.top=ypos;
+        elem.style.left=xpos;
+        var xmomentum=1;
+        var ymomentum=2;
+        var id = setInterval(frame, 5);
+        function frame() {
+            if(ypos+ymomentum<=350&&ypos+ymomentum>=0){
+                ypos+=ymomentum;
+                elem.style.top=ypos+'px';
+            }
+            else {
+                ymomentum*=-1;
+                ypos+=ymomentum;
+                elem.style.top=ypos+'px';
+            }
+            if(xpos+xmomentum<=350&&xpos+xmomentum>=0){
+                xpos+=xmomentum;
+                elem.style.left=xpos+'px';
+            }
+            else {
+                xmomentum*=-1;
+                xpos+=xmomentum;
+                elem.style.left=xpos+'px';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
