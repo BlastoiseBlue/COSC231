@@ -1,5 +1,6 @@
 function getChange(){
     var cash=document.getElementById("cash").value;
+    cash=(Math.floor(cash*100))/100;
     var twenties=Math.floor(cash/20);
     cash%=20;
     var tens=Math.floor(cash/10);
@@ -8,7 +9,7 @@ function getChange(){
     cash%=5;
     var dollars=Math.floor(cash);
     cash%=1;
-    cash*=100;
+    cash=Math.ceil(cash*100);
     var quarters=Math.floor(cash/25);
     cash%=25;
     var dimes=Math.floor(cash/10);
