@@ -99,14 +99,17 @@ td.thirtyThreePix{
 	padding-bottom:30px;
 	text-align:center;
 }
-table#t01 {
-	width: 100%;
+table.shop {
+	width: 33%;
 	border-collapse: collapse;
 }
-table#t02{
-	width:100%;
-	border-collapse:collapse;
-	margin-top:15px;
+th.shop{
+	width:33%;
+	text-align: center;
+}
+td.shop{
+	width:33%;
+	text-align: left;
 }
 /* Style the links inside the navigation bar */
 ul.topnav{
