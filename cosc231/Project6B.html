@@ -8,10 +8,52 @@
 </head>
 <body>
 <h1>Emmet's Item Shop Menu</h1>
-<table>
+<table class="shop">
     <tr>
-        <th></th>
+        <th>Items</th><th>Quantity</th>
+    </tr>
+    <tr>
+        <td>Lamp Oil (20 rupees)</td><td><p><input id="Item1" type="number" min="0" onmouseover="mOver(this)" onmouseout="mOut(this)"></p></td>
+    </tr>
+    <tr>
+        <td>Rope (10 rupees)</td><td><p><input id="Item2" type="number" min="0" onmouseover="mOver(this)" onmouseout="mOut(this)"></p></td>
+    </tr>
+    <tr>
+        <td>Bombs (5 rupees)</td><td><p><input id="Item3" type="number" min="0" onmouseover="mOver(this)" onmouseout="mOut(this)"></p></td>
     </tr>
 </table>
+<p><button onclick="getTotal()">Click for Total</button></p>
+<p><button onclick="clearOrder()">Reset</button></p>
+<script>
+    var i1=0;
+    var i2=0;
+    var i3=0;
+    var total=0;
+    function mOver(obj){
+        obj.style="background:yellow";
+    }
+    function mOut(obj){
+        obj.style="background:green";
+    }
+    function getTotal(){
+        i1=document.getElementById("Item1").value;
+        i2=document.getElementById("Item2").value;
+        i3=document.getElementById("Item3").value;
+        total=i1*20+i2*10+i3*5;
+        alert("Your total is "+total+" rupees")
+    }
+    function clear(obj){
+        obj.value=null;
+        obj.style="background:white";
+    }
+    function clearOrder(){
+        i1=0;
+        i2=0;
+        i3=0;
+        clear(document.getElementById("Item1"));
+        clear(document.getElementById("Item2"));
+        clear(document.getElementById("Item3"));
+    }
+</script>
 </body>
 </html>
