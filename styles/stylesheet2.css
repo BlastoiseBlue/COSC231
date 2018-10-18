@@ -102,13 +102,13 @@ td.thirtyThreePix{
 table.shop {
 	width: 33%;
 	border-collapse: collapse;
+	table-layout: auto;
+	color:#FFE500;
 }
 th.shop{
-	width:33%;
 	text-align: center;
 }
 td.shop{
-	width:33%;
 	text-align: left;
 }
 /* Style the links inside the navigation bar */
