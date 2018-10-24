@@ -25,26 +25,26 @@ This program is a shop UI -->
             names.push(document.getElementById("ItemName").value);
             costs.push(document.getElementById("ItemCost").value);
             quantities.push(document.getElementById("ItemQuantity").value);
-            taxable.push(document.getElementById("IsTaxable").value);
-            categories.forEach(document.getElementById(categories[]).innerHTML=categories.join("<br/>"));
-            //update();
+            taxable.push(document.getElementById("Tax").value=="true");
+            //categories.forEach();
+            update();
         }
         function update(){
             items=[names,costs,quantities,taxable];
-            clearList();
-            categories.forEach(makeList());
+            //  clearList();
+            for(var i=0;i<items.length;i++) {
+                for (var j = 0; j < items[i].length; j++) {
+                    document.getElementById(categories[i]).innerHTML = items[i].join("<br>");
+                }
+            }
+            //categories.forEach(makeList());
         }
         function clearList() {
-            //categories.forEach(document.getElementById(this).innerText=null);
+            categories.forEach(document.getElementById(this).innerText=null);
         }
-        //var text;
-        var x;
-        function makeList(){
-            this.forEach(fillList(x));
-            document.getElementById(this).innerHTML=x;
-        }
-        function fillList(text){
-            text+=items[this.index]+"<br/>";
+        function makeList(value, index, array){
+            console.log(value, index, array);
+            document.getElementById(value).innerHTML=items[index].join("<br>");
         }
     </script>
 </head>
@@ -54,8 +54,8 @@ This program is a shop UI -->
     <p>Enter your item information.<br>Submit the item by clicking on "Add to Cart".<br>Click on the Checkout button when done entering items.</p>
     <form>
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
-            <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?<input id="IsTaxable" type="radio" value="true" required>Yes
-            <input id="IsTaxable" type="radio" value="false" required> No<br>
+            <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?<input id="Tax" type="radio" value="true" required>Yes
+            <input id="Tax" type="radio" value="false" required> No<br>
             <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
         <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
     </form>
