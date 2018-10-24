@@ -10,6 +10,9 @@ This program is a shop UI -->
         table.shop#receipt{
             text-align: right;
         }
+        div#rcpt{
+
+        }
     </style>
     <script>
         var names=[];
@@ -19,22 +22,29 @@ This program is a shop UI -->
         var items=[names,costs,quantities,taxable];
         var categories=["NameList","CostList","QuantityList","TaxList"];
         function addItem(){
-            names.push(document.getElementById("ItemName")).value;
+            names.push(document.getElementById("ItemName").value);
             costs.push(document.getElementById("ItemCost").value);
             quantities.push(document.getElementById("ItemQuantity").value);
-            taxable.push(document.getElementById("IsTaxable").value=="tax");
-            update();
+            taxable.push(document.getElementById("IsTaxable").value);
+            categories.forEach(document.getElementById(categories[]).innerHTML=categories.join("<br/>"));
+            //update();
         }
         function update(){
             items=[names,costs,quantities,taxable];
             clearList();
-            categories.makeList();
+            categories.forEach(makeList());
         }
         function clearList() {
-            categories.forEach(document.getElementById(this).innerHTML=null);
+            //categories.forEach(document.getElementById(this).innerText=null);
         }
+        //var text;
+        var x;
         function makeList(){
-            document.getElementById(this.index).innerHTML+=items[this.index];
+            this.forEach(fillList(x));
+            document.getElementById(this).innerHTML=x;
+        }
+        function fillList(text){
+            text+=items[this.index]+"<br/>";
         }
     </script>
 </head>
@@ -44,21 +54,23 @@ This program is a shop UI -->
     <p>Enter your item information.<br>Submit the item by clicking on "Add to Cart".<br>Click on the Checkout button when done entering items.</p>
     <form>
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
-        <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?<input id="IsTaxable" type="radio" value="tax" required>Yes
-        <input id="IsTaxable" type="radio" value="noTax" required> No<br>
-        <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
-        <input id="AddItem" type="reset" onclick="addItem()">
+            <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?<input id="IsTaxable" type="radio" value="true" required>Yes
+            <input id="IsTaxable" type="radio" value="false" required> No<br>
+            <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
+        <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
     </form>
     <hr>
-    <h1>Mini-Mart EMU Receipt: E. Stanevich</h1>
-    <table class="shop" id="receipt">
-        <tr>
-            <th>Item</th><th>Cost</th><th>Quantity</th><th>Tax</th>
-        </tr>
-        <tr>
-            <td><p id="NameList"></p></td><td><p id="CostList"></p></td><td><p id="QuantityList"></p></td><td><p id="TaxList"></p></td>
-        </tr>
-    </table>
+    <div id="rcpt">
+        <h1>Mini-Mart EMU Receipt: E. Stanevich</h1>
+        <table class="shop" id="receipt">
+            <tr>
+                <th>Item</th><th>Cost</th><th>Quantity</th><th>Tax</th>
+            </tr>
+            <tr>
+                <td><p id="NameList"></p></td><td><p id="CostList"></p></td><td><p id="QuantityList"></p></td><td><p id="TaxList"></p></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>
