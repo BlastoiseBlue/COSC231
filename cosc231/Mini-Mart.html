@@ -27,7 +27,7 @@ This program is a shop UI -->
             names.push(document.getElementById("ItemName").value);
             quantities.push(Number(document.getElementById("ItemQuantity").value));
             costs.push(Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]);
-            taxable.push(document.forms[0][2].checked==true);
+            taxable.push(document.getElementById("Tax").checked==true);
             if(taxable[taxable.length-1]) taxes.push((costs[costs.length-1])*0.06);
             else taxes.push(0.00);
             update();
@@ -75,10 +75,10 @@ This program is a shop UI -->
     <p>Enter your item information.<br>Submit the item by clicking on "Add to Cart".<br>Click on the Checkout button when done entering items.</p>
     <form autocomplete="off">
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
-            <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?
-            <input name="Tax" type="radio" value="true" checked required>Yes
-            <input id="Tax" type="radio" value="true" checked required>Yes
-            <input id="NoTax" type="radio" value="false" required> No<br>
+            <input id="ItemCost" type="number" placeholder="Cost" required>
+            <input id="Tax" type="checkbox">Taxable?<br>
+            <!--<input id="Tax" type="radio" value="true" checked required>Yes-->
+            <!--<input id="NoTax" type="radio" value="false" required> No<br>-->
             <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
         <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
         <button id="Checkout" type="button" onclick="checkout()">Checkout</button>
