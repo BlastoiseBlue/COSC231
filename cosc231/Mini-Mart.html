@@ -27,8 +27,8 @@ This program is a shop UI -->
             names.push(document.getElementById("ItemName").value);
             quantities.push(Number(document.getElementById("ItemQuantity").value));
             costs.push(Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]);
-            taxable.push(document.getElementsByName("Tax").value);
-            if(document.getElementsByName("Tax").value) taxes.push((document.getElementById("ItemCost").value)*0.06);
+            taxable.push(document.forms[0][2].checked==true);
+            if(taxable[taxable.length-1]) taxes.push((costs[costs.length-1])*0.06);
             else taxes.push(0.00);
             update();
         }
@@ -44,7 +44,7 @@ This program is a shop UI -->
                 }
             }
             document.getElementById("receipt").style.visibility="visible";
-            totals.forEach(clear());
+            totals.forEach(function() {value=""});
             //document.getElementById("SubTotal","TotalTax","Total").style.visibility="hidden";
             //table.shop.totals.style="visibility:hidden";
             //categories.forEach(makeList());
@@ -77,7 +77,8 @@ This program is a shop UI -->
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
             <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?
             <input name="Tax" type="radio" value="true" checked required>Yes
-            <input name="Tax" type="radio" value="false" required> No<br>
+            <input id="Tax" type="radio" value="true" checked required>Yes
+            <input id="NoTax" type="radio" value="false" required> No<br>
             <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
         <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
         <button id="Checkout" type="button" onclick="checkout()">Checkout</button>
