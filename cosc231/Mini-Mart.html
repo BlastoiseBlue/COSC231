@@ -26,9 +26,9 @@ This program is a shop UI -->
         function addItem(){
             names.push(document.getElementById("ItemName").value);
             quantities.push(Number(document.getElementById("ItemQuantity").value));
-            costs.push(Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]);
+            costs.push((Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]).toFixed(2));
             taxable.push(document.getElementById("Tax").checked==true);
-            if(taxable[taxable.length-1]) taxes.push((costs[costs.length-1])*0.06);
+            if(taxable[taxable.length-1]) taxes.push(((costs[costs.length-1])*0.06).toFixed(2));
             else taxes.push(0.00);
             update();
         }
@@ -40,7 +40,7 @@ This program is a shop UI -->
             //  clearList();
             for(var i=0;i<items.length;i++) {
                 for (var j = 0; j < items[i].length; j++) {
-                    document.getElementById(categories[i]).innerHTML = items[i].join("<br>");
+                    document.getElementById(categories[i]).innerHTML = (items[i].join("<br>"));
                 }
             }
             document.getElementById("receipt").style.visibility="visible";
@@ -58,9 +58,9 @@ This program is a shop UI -->
         // }
         function checkout(){
             update();
-            document.getElementById("SubTotal").innerHTML="Subtotal: "+costs.reduce(getSum);
-            document.getElementById("TotalTax").innerHTML="Tax: "+taxes.reduce(getSum);
-            document.getElementById("Total").innerHTML="Total: "+[costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum);
+            document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(costs.reduce(getSum)).toFixed(2);
+            document.getElementById("TotalTax").innerHTML="Tax: $"+Number(taxes.reduce(getSum)).toFixed(2);
+            document.getElementById("Total").innerHTML="Total: $"+Number([costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum)).toFixed(2);
             //document.getElementById("SubTotal","TotalTax","Total").style.visibility="visible";
             //table.shop.style="visibility: visible";
         }
