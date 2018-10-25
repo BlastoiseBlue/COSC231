@@ -13,6 +13,9 @@ This program is a shop UI -->
         table.shop.totals{
             visibility: hidden;
         }
+        table.shop{
+            padding: 10px;
+        }
     </style>
     <script>
         var names=[];
@@ -37,7 +40,6 @@ This program is a shop UI -->
         }
         function update(){
             items=[names,costs,quantities,taxable,taxes];
-            //  clearList();
             for(var i=0;i<items.length;i++) {
                 for (var j = 0; j < items[i].length; j++) {
                     document.getElementById(categories[i]).innerHTML = (items[i].join("<br>"));
@@ -45,24 +47,12 @@ This program is a shop UI -->
             }
             document.getElementById("receipt").style.visibility="visible";
             totals.forEach(function() {value=""});
-            //document.getElementById("SubTotal","TotalTax","Total").style.visibility="hidden";
-            //table.shop.totals.style="visibility:hidden";
-            //categories.forEach(makeList());
         }
-        // function clearList() {
-        //     categories.forEach(document.getElementById(this).innerText=null);
-        // }
-        // function makeList(value, index, array){
-        //     console.log(value, index, array);
-        //     document.getElementById(value).innerHTML=items[index].join("<br>");
-        // }
         function checkout(){
             update();
             document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(costs.reduce(getSum)).toFixed(2);
             document.getElementById("TotalTax").innerHTML="Tax: $"+Number(taxes.reduce(getSum)).toFixed(2);
             document.getElementById("Total").innerHTML="Total: $"+Number([costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum)).toFixed(2);
-            //document.getElementById("SubTotal","TotalTax","Total").style.visibility="visible";
-            //table.shop.style="visibility: visible";
         }
         function getSum(total, value){
             return Number(total)+Number(value);
@@ -77,8 +67,6 @@ This program is a shop UI -->
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
             <input id="ItemCost" type="number" placeholder="Cost" required>
             <input id="Tax" type="checkbox">Taxable?<br>
-            <!--<input id="Tax" type="radio" value="true" checked required>Yes-->
-            <!--<input id="NoTax" type="radio" value="false" required> No<br>-->
             <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
         <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
         <button id="Checkout" type="button" onclick="checkout()">Checkout</button>
