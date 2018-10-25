@@ -22,15 +22,18 @@ This program is a shop UI -->
         var taxes=[];
         var items=[names,costs,quantities,taxable,taxes];
         var categories=["NameList","CostList","QuantityList","TaxList","Taxes"];
+        var totals=[document.getElementById("SubTotal"),document.getElementById("TotalTax"),document.getElementById("Total")];
         function addItem(){
             names.push(document.getElementById("ItemName").value);
-            costs.push(document.getElementById("ItemCost").value);
-            quantities.push(document.getElementById("ItemQuantity").value);
+            quantities.push(Number(document.getElementById("ItemQuantity").value));
+            costs.push(Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]);
             taxable.push(document.getElementsByName("Tax").value);
             if(document.getElementsByName("Tax").value) taxes.push((document.getElementById("ItemCost").value)*0.06);
             else taxes.push(0.00);
-            //categories.forEach();
             update();
+        }
+        function setVis(vis){
+            this.style.visibility=vis;
         }
         function update(){
             items=[names,costs,quantities,taxable,taxes];
@@ -39,15 +42,9 @@ This program is a shop UI -->
                 for (var j = 0; j < items[i].length; j++) {
                     document.getElementById(categories[i]).innerHTML = items[i].join("<br>");
                 }
-                // for(var k=0;k<taxes.length;k++){
-                //     var t;
-                //     if(taxable[k])t=costs[k]*0.06;
-                //     else t=0.00;
-                //     taxes.
-                //     document.getElementById("Taxes").innerHTML=taxes.join("<br>");
-                // }
             }
             document.getElementById("receipt").style.visibility="visible";
+            totals.forEach(clear());
             //document.getElementById("SubTotal","TotalTax","Total").style.visibility="hidden";
             //table.shop.totals.style="visibility:hidden";
             //categories.forEach(makeList());
@@ -61,9 +58,9 @@ This program is a shop UI -->
         // }
         function checkout(){
             update();
-            document.getElementById("SubTotal").innerHTML=costs.reduce(getSum);
-            document.getElementById("TotalTax").innerHTML=taxes.reduce(getSum);
-            document.getElementById("Total").innerHTML=costs.reduce(getSum)+taxes.reduce(getSum);
+            document.getElementById("SubTotal").innerHTML="Subtotal: "+costs.reduce(getSum);
+            document.getElementById("TotalTax").innerHTML="Tax: "+taxes.reduce(getSum);
+            document.getElementById("Total").innerHTML="Total: "+[costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum);
             //document.getElementById("SubTotal","TotalTax","Total").style.visibility="visible";
             //table.shop.style="visibility: visible";
         }
@@ -93,13 +90,17 @@ This program is a shop UI -->
                 <th>Item</th><th>Cost</th><th>Quantity</th><th>Taxable?</th><th>Tax</th>
             </tr>
             <tr>
-                <td><p id="NameList"></p></td><td><p id="CostList"></p></td><td><p id="QuantityList"></p></td><td><p id="TaxList"></p></td><td><p id="Taxes"></p></td>
+                <td><p id="NameList"></p></td>
+                <td><p id="CostList"></p></td>
+                <td><p id="QuantityList"></p></td>
+                <td><p id="TaxList"></p></td>
+                <td><p id="Taxes"></p></td>
             </tr>
-            <tr class="totals">
-                <td><p id="SubTotal"></p></td>
+            <tr>
+                <td><p class="totals" id="SubTotal"></p></td>
             </tr>
-            <tr class="totals"><td><p id="TotalTax"></p></td></tr>
-            <tr class="totals"><td><p id="Total"></p></td></tr>
+            <tr><td><p class="totals" id="TotalTax"></p></td></tr>
+            <tr><td><p class="totals" id="Total"></p></td></tr>
         </table>
     </div>
 </div>
