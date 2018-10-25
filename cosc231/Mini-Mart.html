@@ -29,7 +29,7 @@ This program is a shop UI -->
             costs.push((Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]).toFixed(2));
             taxable.push(document.getElementById("Tax").checked==true);
             if(taxable[taxable.length-1]) taxes.push(((costs[costs.length-1])*0.06).toFixed(2));
-            else taxes.push(0.00);
+            else taxes.push(Number(0).toFixed(2));
             update();
         }
         function setVis(vis){
@@ -65,7 +65,7 @@ This program is a shop UI -->
             //table.shop.style="visibility: visible";
         }
         function getSum(total, value){
-            return total+value;
+            return Number(total)+Number(value);
         }
     </script>
 </head>
