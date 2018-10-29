@@ -7,11 +7,14 @@ This program is a shop UI -->
     <title>Mini-Mart EMU Online</title>
     <link rel="stylesheet" href="../styles/stylesheet2.css">
     <style>
-        table.shop#receipt{
-            text-align: right;
+        div#receipt{
+            visibility: hidden;
         }
-        div#rcpt{
-
+        table.shop.totals{
+            visibility: hidden;
+        }
+        table.shop{
+            padding: 10px;
         }
     </style>
     <script>
@@ -19,32 +22,40 @@ This program is a shop UI -->
         var costs=[];
         var quantities=[];
         var taxable=[];
-        var items=[names,costs,quantities,taxable];
-        var categories=["NameList","CostList","QuantityList","TaxList"];
+        var taxes=[];
+        var items=[names,costs,quantities,taxable,taxes];
+        var categories=["NameList","CostList","QuantityList","TaxList","Taxes"];
+        var totals=[document.getElementById("SubTotal"),document.getElementById("TotalTax"),document.getElementById("Total")];
         function addItem(){
             names.push(document.getElementById("ItemName").value);
-            costs.push(document.getElementById("ItemCost").value);
-            quantities.push(document.getElementById("ItemQuantity").value);
-            taxable.push(document.getElementById("IsTaxable").value);
-            categories.forEach(document.getElementById(categories[]).innerHTML=categories.join("<br/>"));
-            //update();
+            quantities.push(Number(document.getElementById("ItemQuantity").value));
+            costs.push((Number(document.getElementById("ItemCost").value)*quantities[quantities.length-1]).toFixed(2));
+            taxable.push(document.getElementById("Tax").checked==true);
+            if(taxable[taxable.length-1]) taxes.push(((costs[costs.length-1])*0.06).toFixed(2));
+            else taxes.push(Number(0).toFixed(2));
+            update();
+        }
+        function setVis(vis){
+            this.style.visibility=vis;
         }
         function update(){
-            items=[names,costs,quantities,taxable];
-            clearList();
-            categories.forEach(makeList());
+            items=[names,costs,quantities,taxable,taxes];
+            for(var i=0;i<items.length;i++) {
+                for (var j = 0; j < items[i].length; j++) {
+                    document.getElementById(categories[i]).innerHTML = (items[i].join("<br>"));
+                }
+            }
+            document.getElementById("receipt").style.visibility="visible";
+            totals.forEach(function() {value=""});
         }
-        function clearList() {
-            //categories.forEach(document.getElementById(this).innerText=null);
+        function checkout(){
+            update();
+            document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(costs.reduce(getSum)).toFixed(2);
+            document.getElementById("TotalTax").innerHTML="Tax: $"+Number(taxes.reduce(getSum)).toFixed(2);
+            document.getElementById("Total").innerHTML="Total: $"+Number([costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum)).toFixed(2);
         }
-        //var text;
-        var x;
-        function makeList(){
-            this.forEach(fillList(x));
-            document.getElementById(this).innerHTML=x;
-        }
-        function fillList(text){
-            text+=items[this.index]+"<br/>";
+        function getSum(total, value){
+            return Number(total)+Number(value);
         }
     </script>
 </head>
@@ -52,23 +63,33 @@ This program is a shop UI -->
 <div class="main">
     <h1>...Mini-Mart EMU Online...</h1>
     <p>Enter your item information.<br>Submit the item by clicking on "Add to Cart".<br>Click on the Checkout button when done entering items.</p>
-    <form>
+    <form autocomplete="off">
         <p><input id="ItemName" type="text" required size="40" placeholder="Item Name"><br>
-            <input id="ItemCost" type="number" placeholder="Cost" required>Taxable?<input id="IsTaxable" type="radio" value="true" required>Yes
-            <input id="IsTaxable" type="radio" value="false" required> No<br>
+            <input id="ItemCost" type="number" placeholder="Cost" required>
+            <input id="Tax" type="checkbox">Taxable?<br>
             <input id="ItemQuantity" type="number" placeholder="Quantity" required><br/></p>
         <button id="AddItem" type="reset" onclick="addItem()">Add Item</button>
+        <button id="Checkout" type="button" onclick="checkout()">Checkout</button>
     </form>
     <hr>
-    <div id="rcpt">
+    <div id="receipt">
         <h1>Mini-Mart EMU Receipt: E. Stanevich</h1>
-        <table class="shop" id="receipt">
+        <table class="shop" style="text-align: right">
             <tr>
-                <th>Item</th><th>Cost</th><th>Quantity</th><th>Tax</th>
+                <th>Item</th><th>Quantity</th><th>Cost</th><th>Taxable?</th><th>Tax</th>
             </tr>
             <tr>
-                <td><p id="NameList"></p></td><td><p id="CostList"></p></td><td><p id="QuantityList"></p></td><td><p id="TaxList"></p></td>
+                <td><p id="NameList"></p></td>
+                <td><p id="QuantityList"></p></td>
+                <td><p id="CostList"></p></td>
+                <td><p id="TaxList"></p></td>
+                <td><p id="Taxes"></p></td>
             </tr>
+        </table>
+        <table class="shop">
+            <tr><td><p class="totals" id="SubTotal"></p></td></tr>
+            <tr><td><p class="totals" id="TotalTax"></p></td></tr>
+            <tr><td><p class="totals" id="Total"></p></td></tr>
         </table>
     </div>
 </div>
