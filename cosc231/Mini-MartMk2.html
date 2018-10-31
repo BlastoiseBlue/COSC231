@@ -72,12 +72,17 @@ This program is a shop UI, and is based on the previous project -->
         }
         function checkout(){
             update();
-            document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(costs.reduce(getSum)).toFixed(2);
-            document.getElementById("TotalTax").innerHTML="Tax: $"+Number(taxes.reduce(getSum)).toFixed(2);
-            document.getElementById("Total").innerHTML="Total: $"+Number([costs.reduce(getSum),taxes.reduce(getSum)].reduce(getSum)).toFixed(2);
-        }
-        function getSum(total, value){
-            return Number(total)+Number(value);
+            var subTotal=0;
+            var totalTax=0;
+            var total=0;
+            for(var i=0;i<items.length;i++){
+                subTotal+=Number(items[i].itemCost);
+                totalTax+=Number(items[i].itemTax);
+            }
+            total=subTotal+totalTax;
+            document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(subTotal).toFixed(2);
+            document.getElementById("TotalTax").innerHTML="Tax: $"+Number(totalTax).toFixed(2);
+            document.getElementById("Total").innerHTML="Total: $"+Number(total).toFixed(2);
         }
         // function clear(){
         //     this.innerHTML="";
