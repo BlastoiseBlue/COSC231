@@ -66,7 +66,9 @@ This program is a shop UI, and is based on the previous project -->
             document.getElementById("CostList").innerHTML=costOut;
             document.getElementById("Taxes").innerHTML=taxOut;
             document.getElementById("receipt").style.visibility="visible";
-            totals.forEach(function() {value=""});
+            document.getElementById("SubTotal").innerHTML="";
+            document.getElementById("TotalTax").innerHTML="";
+            document.getElementById("Total").innerHTML="";
         }
         function checkout(){
             update();
