@@ -18,11 +18,6 @@ This program is a shop UI, and is based on the previous project -->
         }
     </style>
     <script>
-        // var names=[];
-        // var costs=[];
-        // var quantities=[];
-        // var taxable=[];
-        // var taxes=[];
         var items=[];
         function Item (name,quantity,cost,isTaxable,tax){
             this.itemName=name;
@@ -32,7 +27,6 @@ This program is a shop UI, and is based on the previous project -->
             this.itemTax=tax;
         }
         var categories=["NameList","CostList","QuantityList","TaxList","Taxes"];
-        //var totals=[document.getElementById("SubTotal"),document.getElementById("TotalTax"),document.getElementById("Total")];
         function addItem(){
             var name=document.getElementById("ItemName").value;
             var quant=Number(document.getElementById("ItemQuantity").value);
@@ -44,11 +38,7 @@ This program is a shop UI, and is based on the previous project -->
             items.push(new Item(name,quant,cost,taxable,itemTax));
             update();
         }
-        // function setVis(vis){
-        //     this.style.visibility=vis;
-        // }
         function update(){
-            //items=[names,costs,quantities,taxable,taxes];
             var nameOut="";
             var quantOut="";
             var costOut="";
@@ -84,16 +74,6 @@ This program is a shop UI, and is based on the previous project -->
             document.getElementById("TotalTax").innerHTML="Tax: $"+Number(totalTax).toFixed(2);
             document.getElementById("Total").innerHTML="Total: $"+Number(total).toFixed(2);
         }
-        // function clear(){
-        //     this.innerHTML="";
-        // }
-        // function getSum(obj){
-        //     var total;
-        //     for(var i=0;i<items.length;i++){
-        //         total+=items[i].obj;
-        //     }
-        //     return total;
-        // }
     </script>
 </head>
 <body>
@@ -113,15 +93,12 @@ This program is a shop UI, and is based on the previous project -->
         <h1>Mini-Mart EMU Receipt: E. Stanevich</h1>
         <table class="shop" style="text-align: right">
             <tr>
-                <th>Item</th><th>Quantity</th><th>Cost</th>
-                <!--<th>Taxable?</th>-->
-                <th>Tax</th>
+                <th>Item</th><th>Quantity</th><th>Cost</th><th>Tax</th>
             </tr>
             <tr>
                 <td><p id="NameList"></p></td>
                 <td><p id="QuantityList"></p></td>
                 <td><p id="CostList"></p></td>
-                <!--<td><p id="TaxList"></p></td>-->
                 <td><p id="Taxes"></p></td>
             </tr>
         </table>
