@@ -36,11 +36,11 @@ This program is a shop UI, and is based on the previous project -->
         function addItem(){
             var name=document.getElementById("ItemName").value;
             var quant=Number(document.getElementById("ItemQuantity").value);
-            var cost=(Number(document.getElementById("ItemCost").value)*quant).toFixed(2);
+            var cost=(Number(document.getElementById("ItemCost").value)*quant);
             var taxable=document.getElementById("Tax").checked==true;
             var itemTax;
-            if(taxable)itemTax=((cost*0.06).toFixed(2));
-            else itemTax=(Number(0).toFixed(2));
+            if(taxable)itemTax=((cost*0.06));
+            else itemTax=(Number(0));
             items.push(new Item(name,quant,cost,taxable,itemTax));
             update();
         }
@@ -57,9 +57,9 @@ This program is a shop UI, and is based on the previous project -->
             for(var i=0;i<items.length;i++) {
                 nameOut+=items[i].itemName+"<br>";
                 quantOut+=items[i].itemQuantity+"<br>";
-                costOut+="$"+items[i].itemCost+"<br>";
+                costOut+="$"+Number(items[i].itemCost).toFixed(2)+"<br>";
                 taxableOut+=items[i].taxable+"<br>";
-                taxOut+="$"+items[i].itemTax+"<br>";
+                taxOut+="$"+Number(items[i].itemTax).toFixed(2)+"<br>";
             }
             document.getElementById("NameList").innerHTML=nameOut;
             document.getElementById("QuantityList").innerHTML=quantOut;
