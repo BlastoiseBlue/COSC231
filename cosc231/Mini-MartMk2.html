@@ -20,35 +20,35 @@ This program is a shop UI, and is based on the previous project -->
     <script>
         var items=[];
         function Item (name,quantity,cost,isTaxable,tax){
-            this.itemName=name;
-            this.itemQuantity=quantity;
-            this.itemCost=cost;
-            this.taxable=isTaxable;
-            this.itemTax=tax;
+            this.itemName=name; // Name of the item
+            this.itemQuantity=quantity; // Amount of this item purchased. This determines itemCost.
+            this.itemCost=cost; // Full price for this item. Note that this it the combined cost of the item, rather than the cost per unit.
+            this.taxable=isTaxable; // Determines whether to apply a tax on this item
+            this.itemTax=tax; // Tax on this item. As with itemCost, this is the total tax for this item, not the individual tax per item.
         }
         function addItem(){
-            var name=document.getElementById("ItemName").value;
-            var quant=Number(document.getElementById("ItemQuantity").value);
-            var cost=(Number(document.getElementById("ItemCost").value)*quant);
-            var taxable=document.getElementById("Tax").checked==true;
+            var name=document.getElementById("ItemName").value; // Sets the name the item will use
+            var quant=Number(document.getElementById("ItemQuantity").value); // Sets the amount of this item that gets purchased
+            var cost=(Number(document.getElementById("ItemCost").value)*quant); // Reads the cost per item, and sets the total cost for this item
+            var taxable=document.getElementById("Tax").checked==true; // Checks weather the "Taxable?" box is checked
             var itemTax;
-            if(taxable)itemTax=((cost*0.06));
-            else itemTax=(Number(0));
-            items.push(new Item(name,quant,cost,taxable,itemTax));
+            if(taxable)itemTax=((cost*0.06)); // Tax is applied if the "Taxable?" box is checked
+            else itemTax=(Number(0)); // Otherwise, the item has no tax applied
+            items.push(new Item(name,quant,cost,taxable,itemTax)); // Uses all the variables as defined above to create a new Item object in the Items array
             update();
         }
         function update(){
-            var nameOut="";
-            var quantOut="";
-            var costOut="";
-            var taxableOut="";
-            var taxOut="";
-            for(var i=0;i<items.length;i++) {
+            var nameOut=""; // This will be the list of item names
+            var quantOut=""; // This will be the amount of each item
+            var costOut=""; // This will be the total cost of each item
+            var taxableOut=""; // This will not be displayed
+            var taxOut=""; // This will be the list of total taxes of each item
+            for(var i=0;i<items.length;i++) {   // This loop will create proto-lists that will then be sent to become the actual lists
                 nameOut+=items[i].itemName+"<br>";
                 quantOut+=items[i].itemQuantity+"<br>";
-                costOut+="$"+Number(items[i].itemCost).toFixed(2)+"<br>";
+                costOut+="$"+Number(items[i].itemCost).toFixed(2)+"<br>"; // This will be formatted as dollars
                 taxableOut+=items[i].taxable+"<br>";
-                taxOut+="$"+Number(items[i].itemTax).toFixed(2)+"<br>";
+                taxOut+="$"+Number(items[i].itemTax).toFixed(2)+"<br>"; // This will be formatted as dollars
             }
             document.getElementById("NameList").innerHTML=nameOut;
             document.getElementById("QuantityList").innerHTML=quantOut;
@@ -59,16 +59,16 @@ This program is a shop UI, and is based on the previous project -->
             document.getElementById("TotalTax").innerHTML="";
             document.getElementById("Total").innerHTML="";
         }
-        function checkout(){
+        function checkout(){ // This will output the subtotal, total tax, and total, formatted as dollars
             update();
             var subTotal=0;
             var totalTax=0;
             var total=0;
-            for(var i=0;i<items.length;i++){
+            for(var i=0;i<items.length;i++){ // Simultaneously adds the costs and taxes of each item object
                 subTotal+=Number(items[i].itemCost);
                 totalTax+=Number(items[i].itemTax);
             }
-            total=subTotal+totalTax;
+            total=subTotal+totalTax; // Combines the subtotal and total tax into the final cost
             document.getElementById("SubTotal").innerHTML="Subtotal: $"+Number(subTotal).toFixed(2);
             document.getElementById("TotalTax").innerHTML="Tax: $"+Number(totalTax).toFixed(2);
             document.getElementById("Total").innerHTML="Total: $"+Number(total).toFixed(2);
