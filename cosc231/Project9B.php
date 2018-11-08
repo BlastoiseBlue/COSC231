@@ -2,7 +2,7 @@
 <!--Reverse the String
 Created by Emmet Stanevich and Joshua Troop
 Created on 08 November 2018
-Description: 
+Description: This program spells five sentences froward and backward
 -->
 <html lang="en-US">
 <head>
