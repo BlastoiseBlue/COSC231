@@ -51,12 +51,20 @@ This program simulates 100 coin flips
         <input type="submit" name="submit" value="Submit">
     </form>
     <?php
+    $remaining=count($results);
     $columns=10;
     $rows=ceil(count($results)/$columns);
     for($i=0;$i<$rows;$i++){
+        if($remaining>=$columns){
         for($j=0;$j<$columns;$j++){
             if($results[$i+10*$j]==true)echo "<span>H</span>";
             else if($results[$i+10*$j]==false) echo "<span>T</span>";
+            else echo "";
+            $remaining--;
+        }
+        }else for($k=0;$k<count($results)%$columns;$k++){
+            if($results[$i+10*$k]==true)echo "<span>H</span>";
+            else if($results[$i+10*$k]==false) echo "<span>T</span>";
             else echo "";
         }echo "<br>";
     }
