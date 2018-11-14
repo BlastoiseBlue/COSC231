@@ -31,7 +31,7 @@ This program simulates 100 coin flips
         else {
             $flips=test_input($_GET["coins"]);
             for($i=0;$i<$flips;$i++){
-                if(round(mt_rand(0,1))==1)$results[$i]=true;
+                if(mt_rand(0,1)==1)$results[$i]=true;
                 else $results[$i]=false;
             }
         }
