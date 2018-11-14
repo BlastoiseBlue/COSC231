@@ -55,19 +55,20 @@ This program simulates 100 coin flips
     $columns=10;
     $rows=ceil(count($results)/$columns);
     for($i=0;$i<$rows;$i++){
+        $output="";
         if($remaining>=$columns){
         for($j=0;$j<$columns;$j++){
-            if($results[$i+10*$j]==true)echo "<span>H</span>";
-            else if($results[$i+10*$j]==false) echo "<span>T</span>";
-            else echo "";
+            if($results[$i+10*$j]==true) $output.="H";
+            else if($results[$i+10*$j]==false) $output.="T";
+            else $output.=" ";
             $remaining--;
         }
         }else for($k=0;$k<count($results)%$columns;$k++){
-            if($results[$i+10*$k]==true)echo "<span>H</span>";
-            else if($results[$i+10*$k]==false) echo "<span>T</span>";
-            else echo "";
+            if($results[$i+10*$k]==true) $output.="H";
+            else if($results[$i+10*$k]==false) $output.="T";
+            else $output.=" ";
             $remaining--;
-        }echo "<br>";
+        }echo "<span class='output'>".$output."</span><br>";
     }
     ?>
 </div>
