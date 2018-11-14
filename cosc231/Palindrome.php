@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <!--
 Created on 11/14 by Emmet Stanevich and Ben Kolar on 11/14
@@ -14,13 +17,11 @@ This program accepts strings, and then shows whether each one is a palindrome
 <div class="main">
     <?php
     $stringsErr="";
-    global $strings;
-    $strings=array();
     echo "<h1>Palindrome Detector</h1><h2>This program will accept strings and tell you if they are palindromes</h2>";
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         if(empty($_POST["input"]))$stringsErr="Please enter a string";
         else{
-            array_push($strings,test_input(($_POST["input"])));
+            array_push($_SESSION["Array"],test_input(($_POST["input"])));
         }
     }
     function test_input($data) {
@@ -38,12 +39,13 @@ This program accepts strings, and then shows whether each one is a palindrome
         <input type="submit" name="submit" value="Submit">
     </form>
     <?php
-    array_walk($strings,"compare");
+    array_walk($_SESSION["Array"],"compare");
     function compare($value){
         echo "<span>".$value." is ";
         $placeholder=implode("",explode(" ,.!?",$value));
         if($placeholder==strcasecmp($placeholder,strrev($placeholder)))echo "a palindrome!</span>";
         else echo "not a palindrome!</span>";
+        echo "<br>";
     }
     ?>
 </div>
