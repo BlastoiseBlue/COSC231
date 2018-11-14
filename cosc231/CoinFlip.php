@@ -8,16 +8,7 @@ This program simulates a number of coin flips, between 100 and 500, and displays
 <head>
     <meta charset="UTF-8">
     <title>Coin Flip</title>
-    <link rel="stylesheet" href="../styles/stylesheet2.css">
-    <style>
-        .error {color:#FF0000}
-        span {font-family: Monospaced;
-        color:#FFE500}
-        .output {
-            font-family: "Courier New";
-            font-size: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/stylesheet3.css">
 </head>
 <body>
 <div class="main">

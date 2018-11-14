@@ -1,0 +1,173 @@
+/*
+Created by Emmet Stanevich on 11/14
+Updated on 11/14
+This sheet is derived from stylesheet2
+*/
+body{
+	background-color:#1414B5;
+}
+h1{
+	font-family:Arial,Helvetica,sans-serif;
+	text-align:center;
+	color:#FFE500;
+}
+h2{
+	font-family:Arial,Helvetica,sans-serif;
+	text-align:center;
+	color:#FFE500;
+}
+h3{
+	font-family:Arial,Helvetica,sans-serif;
+	text-align: center;
+	color:#FFE500;
+}
+p{
+	font-family:"Times New Roman",Times,serif;
+	/*text-align: center;*/
+	color:#FFE500;
+}
+.error {color:#FF0000}
+span {
+	font-family: Monospaced, monospace;
+	color:#FFE500}
+span.output {
+	font-family: "Courier New", monospace;
+	font-size: 20px;
+}
+a{
+	font-family:"Times New Roman",Times,serif;
+	color:#FF9500;
+}
+a:link{
+	font-family:"Times New Roman",Times,serif;
+	color:#FF9500;
+}
+a:visited{
+	font-family:"Times New Roman",Times,serif;
+	color:yellow;
+}
+a.highlight:hover{
+	font-family:"Times New Roman",Times,serif;
+	color:#FFBC5D;
+}
+a:active{
+	font-family:"Times New Roman",Times,serif;
+	color:#FFAE3B;
+}
+li{
+	font-family:"Times New Roman",Times,serif;
+	color:#FFE500;
+}
+hr{
+	border-width:0px;
+	height:10px;
+	background-color:#FFE500;
+}
+table.sixHundredWithYellowLine {
+	border: 1px solid #FFE500;
+	width: 600px;
+	table-layout: auto;
+	border-collapse: collapse;
+	margin-top:15px;
+}
+caption {
+	caption-side: top;
+	text-align: center;
+}
+td.thirtyThree {
+	border: 1px solid #FFE500;
+	border-collapse: collapse;
+	width: 33%;
+	padding: 5px;
+	text-align:center;
+}
+td.sixtySix {
+	border: 1px solid #FFE500;
+	border-collapse: collapse;
+	width: 66%;
+	text-align: left;
+	padding-left:10px;
+}
+th.thirtyThree {
+	border: 1px solid #FFE500;
+	border-collapse: collapse;
+	width: 33%;
+}
+th.sixtySix {
+	border: 1px solid #FFE500;
+	border-collapse: collapse;
+	width: 66%;
+}
+td.thirtyThreePix{
+	border:1px solid #FFE500;
+	border-collapse:collapse;
+	width:33%;
+	padding:30px;
+	padding-bottom:30px;
+	text-align:center;
+}
+table.shop {
+	width: 33%;
+	border-collapse: collapse;
+	table-layout: auto;
+	color:#FFE500;
+}
+th.shop{
+	text-align: center;
+}
+td.shop{
+	text-align: left;
+}
+/* Style the links inside the navigation bar */
+ul.topnav{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #080864;
+	top: 0;
+	left:0;
+	width: 100%;
+	position: fixed;
+	z-index:1;
+}
+ul.topnav li a {
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+/* Change the color of links on hover */
+ul.topnav a:hover:not(.active) {
+	background-color: #ddd;
+	color: black;
+}
+/* Add a color to the active/current link */
+ul.topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+div.main{
+	padding:20px;
+	margin-top:30px;
+	position:relative;
+	z-index:0;
+}
+ul.topnav li{
+	float:left;
+	padding: 0
+}
+ul.topnav li.right{
+	float:right;
+}
+img.main{
+	width:300px;
+}
+@media screen and (max-width: 600px){
+	ul.topnav li.right,
+	ul.topnav li {float:none;}
+	div.main {margin-top:180px;}
+	img.main {width:100%;}
+	td.thirtyThreePix {padding:0;}
+}
