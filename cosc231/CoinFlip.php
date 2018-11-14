@@ -4,7 +4,7 @@ Created by Emmet Stanevich and Ben Kolar on 11/13
 This program simulates a number of coin flips, between 100 and 500, and displays the results
 -->
 
-<html lang="en=US">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <title>Coin Flip</title>
