@@ -13,6 +13,10 @@ This program simulates 100 coin flips
         .error {color:#FF0000}
         span {font-family: Monospaced;
         color:#FFE500}
+        .output {
+            font-family: "Courier New";
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
