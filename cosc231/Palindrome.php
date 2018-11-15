@@ -45,7 +45,7 @@ This program accepts strings, and then shows whether each one is a palindrome
     array_walk($_SESSION["Array"],"compare");
     function compare($value){
         echo "<span>".$value." is ";
-        $placeholder=implode("",explode(" ,.!?",$value));
+        $placeholder=preg_replace('/[^a-zA-Z0-9-_\.]/', '',$value);
         if($placeholder==strcasecmp($placeholder,strrev($placeholder)))echo "a palindrome!</span>";
         else echo "not a palindrome!</span>";
         echo "<br>";
