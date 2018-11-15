@@ -1,7 +1,5 @@
 <?php
-if(session_start()){
-    $_SESSION["Array"];
-}
+session_start();
 ?>
 <!DOCTYPE html>
 <!--
