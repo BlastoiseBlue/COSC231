@@ -26,7 +26,10 @@ This program simulates a number of coin flips, between 100 and 500, and displays
         else {
             $flips=test_input($_GET["coins"]);
             for($i=0;$i<$flips;$i++){
-                if(mt_rand(0,1)==1)$results[$i]=true;
+                if(mt_rand(0,1)==1){
+                    $results[$i]=true;
+                    $heads++;
+                }
                 else $results[$i]=false;
             }
         }
@@ -49,11 +52,12 @@ This program simulates a number of coin flips, between 100 and 500, and displays
     $remaining=count($results);
     $columns=10;
     $rows=ceil(count($results)/$columns);
+
     for($i=0;$i<$rows;$i++){
         $output="";
         if($remaining>=$columns){
         for($j=0;$j<$columns;$j++){
-            if($results[$i+10*$j]==true) $output.="H";
+            if($results[$i+10*$j]==true)$output.="H";
             else if($results[$i+10*$j]==false) $output.="T";
             else $output.=" ";
             $remaining--;
@@ -64,7 +68,8 @@ This program simulates a number of coin flips, between 100 and 500, and displays
             else $output.=" ";
             $remaining--;
         }echo "<span class='output'>".$output."</span><br>";
-    }
+    }echo "<span class='output'>Heads: $heads<br>
+    Tails: ".(count($results)-$heads)."</span>";
     ?>
 </div>
 </body>
