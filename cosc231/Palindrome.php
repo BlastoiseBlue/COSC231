@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_start()){
+    $_SESSION["Array"];
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -17,6 +19,7 @@ This program accepts strings, and then shows whether each one is a palindrome
 <div class="main">
     <?php
     $stringsErr="";
+    if($_SESSION["Array"][0]==null)$_SESSION["Array"]=array();
     echo "<h1>Palindrome Detector</h1><h2>This program will accept strings and tell you if they are palindromes</h2>";
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         if(empty($_POST["input"]))$stringsErr="Please enter a string";
