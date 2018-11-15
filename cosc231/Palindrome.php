@@ -3,7 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <!--
-Created on 11/14 by Emmet Stanevich and Ben Kolar on 11/14
+Created by Emmet Stanevich and Ben Kolar on 11/14
 This program accepts strings, and then shows whether each one is a palindrome
 -->
 
