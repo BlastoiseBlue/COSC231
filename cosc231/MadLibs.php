@@ -13,11 +13,10 @@ This program will take the entries from MadLibsEntry and fir them into a Mad Lib
 <div class="main">
     <?php
     $default="_____";
-    $entries=array();
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         for($i=0;$i<8;$i++){
-            if($_SESSION["Entries"][$i]=null||empty($_POST["entry$i"]))$entries[$i]=$default;
-            else $entries[$i]=test_input($_SESSION["Entries"][$i]);
+            if($_SESSION["Entries"][$i]=null||empty($_POST["entry$i"]))$_SESSION["Entries"][$i]=$default;
+            else $_SESSION["Entries"][$i]=test_input($_POST["entry$i"]);
         }
     }
     function test_input($data) {
@@ -27,10 +26,10 @@ This program will take the entries from MadLibsEntry and fir them into a Mad Lib
         return $data;
     }
     echo "<h1>Mad Libs</h1>";
-    echo "<p>I once owned a $entries[0] near lake $entries[1].".
-        "I considered myself lucky, seeing as I was able to afford it despite working as a $entries[2].".
-        "It isn't all that bad a job, really, aside from when my $entries[3] tells me to $entries[4] the $entries[5].".
-        "I just have to keep working every $entries[6] if I want to earn that $entries[7].</p>";
+    echo "<p>I once owned a {$_SESSION["Entries"][0]} near lake {$_SESSION["Entries"][1]}. ".
+        "I considered myself lucky, seeing as I was able to afford it despite working as a {$_SESSION["Entries"][2]}. ".
+        "It isn't all that bad a job, really, aside from when my {$_SESSION["Entries"][3]} tells me to {$_SESSION["Entries"][4]} the {$_SESSION["Entries"][5]}. ".
+        "I just have to keep working every {$_SESSION["Entries"][6]} if I want to earn that {$_SESSION["Entries"][7]}.</p>";
     ?>
 </div>
 </body>
