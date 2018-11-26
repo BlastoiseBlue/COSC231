@@ -24,7 +24,7 @@ This program will take 8 strings via forms and fit them into a Mad Lib on a sepa
             <tr><th>Prompt</th><th>Input</th></tr>
             <?php
             for($i=0;$i<8;$i++){
-                echo "<tr><td>"."$categories[$i]".":</td><td><input type='text' name='entry".$i."'></td>";
+                echo "<tr><td>"."$categories[$i]".":</td><td><input type='text' name='entry".$i."' autocomplete='off' required></td>";
             }
             ?>
         </table>
